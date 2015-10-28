@@ -138,16 +138,17 @@ func (a *Appbase) addBulkCommand(msg *message.Msg) (*message.Msg, error) {
 		bulkRequest := elastic.NewBulkDeleteRequest().Index(a.appName).Type(a.typename).Id(id)
 		a.AddBulkRequestSize(bulkRequest)
 		a.bulkService.Add(bulkRequest)
+		break
 	case message.Update:
-		bulkRequest := elastic.NewBulkUpdateRequest().Index(a.appName).Type(a.typename).Id(id)
+		bulkRequest := elastic.NewBulkUpdateRequest().Index(a.appName).Type(a.typename).Id(id).Doc(msg.Data)
 		a.AddBulkRequestSize(bulkRequest)
 		a.bulkService.Add(bulkRequest)
-	case message.Noop:
-		continue
+		break
 	default:
 		bulkRequest := elastic.NewBulkIndexRequest().Index(a.appName).Type(a.typename).Id(id).Doc(msg.Data)
 		a.AddBulkRequestSize(bulkRequest)
 		a.bulkService.Add(bulkRequest)
+		break
 	}
 
 	a.commitBulk(false)

@@ -9,8 +9,8 @@ Transporter
 
 Build
 -----
-git clone https://github.com/compose/transporter
-git add remote fork https://github.com/cleitonmarx/transporter
+`git clone https://github.com/compose/transporter`
+`git add remote fork https://github.com/cleitonmarx/transporter`
 
 make sure godep is installed, `go get github.com/tools/godep` and then build with
 `godep restore`

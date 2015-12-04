@@ -9,12 +9,19 @@ Transporter
 
 Build
 -----
-`git clone https://github.com/compose/transporter`  
+`go get github.com/compose/transporter`  
+`cd $GOPATH/src/github.com/compose/transporter`  
 `git add remote fork https://github.com/cleitonmarx/transporter`  
+`git pull fork master`    
 
-make sure godep is installed, `go get github.com/tools/godep` and then build with
-`godep restore`
+make sure godep is installed, `go get github.com/tools/godep` and then build with  
+`godep restore`  
 `godep go build -a ./cmd/...`
+
+Install
+-----
+Create a build  
+`godep go install ./cmd/...`  
 
 
 Configure
